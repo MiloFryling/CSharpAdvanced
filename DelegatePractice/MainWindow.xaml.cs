@@ -24,5 +24,45 @@ namespace DelegatePractice
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new MainThingProcessor().DoProcesses();
+        }
+
+
+        public static class ProcessesWeMightExtend
+        {
+            public static void DoProcessA(MainThing mainThing)
+            {
+                Console.WriteLine("DoProcessA");
+            }
+            public static void DoProcessB(MainThing mainThing)
+            {
+                Console.WriteLine("DoProcessB");
+            }
+
+        }
+        public class MainThingProcessor
+        {
+            MainThing _mainThing = new MainThing();
+
+     
+            public void DoProcesses()
+            {
+                ProcessesWeMightExtend.DoProcessA(_mainThing);
+                ProcessesWeMightExtend.DoProcessB(_mainThing);
+
+            }
+        }
+
+        public class MainThing
+        {
+            public int Size { get; set; }
+
+            
+
+
+        }
     }
 }
